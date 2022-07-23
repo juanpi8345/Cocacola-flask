@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{%block title%} {{title}} {% endblock%}
+
+{%block content%}
+    {%from "macro.html" import render_field%}
+<div class="container absoluto">
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}" >
+            <div class="form-box">
+                <img src="{{url_for('static',filename= 'img/coca-cola.png')}}">
+                {{render_field(form.username)}}
+                {{render_field(form.password)}}
+                {{form.honeypot}}
+                <button type="submit" class="boton-sesion">Iniciar sesion</button>
+                <div class="sucess">
+                    <h4 style="color: white;">No posees una cuenta?</h4>
+                    <a href="register" class="boton-sesion">Registrarse</a>
+                </div>
+            </div>
+     </form>
+ </div>
+
+{%endblock%}
